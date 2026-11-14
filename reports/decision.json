@@ -1,0 +1,19 @@
+{
+  "status": "REWORK",
+  "reason_code": "RECAPTURE_RATE_HIGH",
+  "reason": "41/96 images need recapture (43%)",
+  "owner": "Do Phuong Manh - reviewer",
+  "scope": "t02",
+  "evidence": [
+    "out\\poc\\ranked_review.csv",
+    "out\\poc\\review_queue.csv"
+  ],
+  "metrics": {
+    "n_items": 96,
+    "n_recapture": 41,
+    "recapture_rate": 0.4271,
+    "n_reviewed": 20
+  },
+  "ts": "2026-11-14T08:54:24+00:00",
+  "canonical": "REWORK"
+}

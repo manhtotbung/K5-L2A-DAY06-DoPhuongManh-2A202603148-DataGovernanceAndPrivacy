@@ -19,6 +19,6 @@
 | Chỉ số lỗi xấu (miss / false alarm / false reject) | miss (ảnh lỗi lọt ra ngoài top-B) xấu nhất; false alarm ảnh đêm/cam_B là lỗi phụ |
 | Slices sẽ báo cáo (≥2) | `light` (day/dusk/night), `defect_type` (blur/dark/glare/compression), `camera_id` (cam_A/cam_B) |
 | Cách báo độ bất định khi N nhỏ (Wilson CI / bootstrap) | Wilson 95% CI cho Recall@B và Precision@B (N eval = 40) |
-| Ngày giờ chốt + người chốt | 2026-11-14 · ManhDo (TODO: xác nhận owner) |
+| Ngày chốt theo config và người phụ trách | 2026-11-14 · Do Phuong Manh (ManhDo), owner theo `configs/lab.yaml` |
 
 Nếu baseline = 0 thì ghi rõ "baseline = 0" thay vì phần trăm cải thiện.

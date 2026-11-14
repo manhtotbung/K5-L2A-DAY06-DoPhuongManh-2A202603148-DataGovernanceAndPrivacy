@@ -1,0 +1,5 @@
+ts,scope,status,canonical,reason_code,reason,owner,evidence
+2026-11-14T08:20:42+00:00,t02,HOLD,HOLD,REVIEW_PENDING,Only 0/20 queue items reviewed; human review required,TODO: tên người ký duyệt (role),out\poc\ranked_review.csv;out\poc\review_queue.csv
+2026-11-14T08:42:14+00:00,t02,HOLD,HOLD,REVIEW_PENDING,Only 0/20 queue items reviewed; human review required,Do Phuong Manh - reviewer,out\poc\ranked_review.csv;out\poc\review_queue.csv
+2026-11-14T08:46:37+00:00,t02,REWORK,REWORK,RECAPTURE_RATE_HIGH,41/96 images need recapture (43%),Do Phuong Manh - reviewer,out\poc\ranked_review.csv;out\poc\review_queue.csv
+2026-11-14T08:54:24+00:00,t02,REWORK,REWORK,RECAPTURE_RATE_HIGH,41/96 images need recapture (43%),Do Phuong Manh - reviewer,out\poc\ranked_review.csv;out\poc\review_queue.csv

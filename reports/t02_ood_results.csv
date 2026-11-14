@@ -1,0 +1,11 @@
+image_id,source_path,score,pred_defect_type,pred_action
+orig_02_1,holdout_transformed/hold_001.jpg,10.0,glare,RECAPTURE
+orig_09_8,holdout_transformed/hold_012.jpg,1.839493,blur,RECAPTURE
+orig_02_3,holdout_transformed/hold_003.jpg,1.753829,blur,RECAPTURE
+orig_02_0,holdout_transformed/hold_000.jpg,1.614258,dark,RECAPTURE
+orig_09_5,holdout_transformed/hold_009.jpg,1.556465,dark,RECAPTURE
+orig_09_6,holdout_transformed/hold_010.jpg,1.383333,glare,RECAPTURE
+orig_09_7,holdout_transformed/hold_011.jpg,0.63165,none,KEEP
+orig_02_2,holdout_transformed/hold_002.jpg,0.512629,none,KEEP
+orig_09_9,holdout_transformed/hold_013.jpg,0.038889,none,KEEP
+orig_02_4,holdout_transformed/hold_004.jpg,0.016667,none,KEEP

@@ -7,6 +7,24 @@ vấn đề, baseline, thuật toán, đánh giá trung thực, human-in-the-loo
 > Repo **không** chứa lời giải. `src/pipeline.py` là file nhóm sở hữu; mọi thuật toán (kể cả baseline) do nhóm tự cài.
 > Tài liệu học tập, không thay tư vấn pháp lý.
 
+## Bài cá nhân T02 · Do Phuong Manh (2A202603148)
+
+[Slide demo T02](demo/t02_demo.pptx) · [Kết quả kiểm 10 ảnh ngoài tập T02](reports/t02_ood_results.csv).
+
+Các mốc Git của bài dùng tag `demo-180m` và `final-24h`. Bản đóng gói cục bộ được chuẩn bị sau khi hoàn tất slide và kiểm tra ảnh ngoài tập T02.
+
+[Báo cáo](reports/group_report.md) ghi cách chạy baseline và PoC, cách đánh giá trên split eval và các trường hợp lỗi. Kết quả lô là **REWORK** theo [quyết định PoC](reports/decision.json). Xem [hàng đợi đã duyệt](reports/review_queue.csv) và [nhật ký quyết định](reports/decision_log.csv). PoC ghi audit log vào `out/poc/audit_log.jsonl` khi chạy.
+
+Sau khi cài môi trường Python, chạy từ thư mục gốc của repo. Trên Windows, dùng `.venv/Scripts/python.exe` thay cho `python` nếu chưa kích hoạt môi trường.
+
+```powershell
+New-Item -ItemType Directory -Force out/poc | Out-Null
+Copy-Item reports/review_queue.csv out/poc/review_queue_reviewed.csv
+python -m src.main --config configs/lab.yaml --output out/poc --run-name poc --offline --seed 42
+```
+
+Các metric đánh giá chính thức chờ bộ ground truth của giảng viên. Lệnh chạy evaluator có trong mục 08 của báo cáo.
+
 ## 1. Quickstart (≤ 5 phút, chạy offline)
 
 ```bash
