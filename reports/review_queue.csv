@@ -1,21 +1,21 @@
 rank,item_id,score,reason,suggested_action,slice,evidence_path,reviewer,reviewer_decision,override_value,review_note,reviewed_at
-1,img_17_2,9.925,glare (9.93),RECAPTURE,day,images/img_17_2.jpg,Do Phuong Manh,approve,,Saturated bright region obscures scene or vehicle detail. Do Phuong Manh confirmed viewing all 20 images and approving these decisions in chat.,2026-11-14T08:54:19.999115+00:00
-2,img_15_3,3.228457,dark (3.23),RECAPTURE,dusk,images/img_15_3.jpg,Do Phuong Manh,approve,,Severe darkness obscures vehicles and road details. Do Phuong Manh confirmed viewing all 20 images and approving these decisions in chat.,2026-11-14T08:54:20.000131+00:00
-3,img_23_3,2.988318,dark (2.99),RECAPTURE,day,images/img_23_3.jpg,Do Phuong Manh,approve,,Severe darkness obscures vehicles and road details. Do Phuong Manh confirmed viewing all 20 images and approving these decisions in chat.,2026-11-14T08:54:20.000131+00:00
-4,img_17_3,2.933616,dark (2.93),RECAPTURE,day,images/img_17_3.jpg,Do Phuong Manh,approve,,Severe darkness obscures vehicles and road details. Do Phuong Manh confirmed viewing all 20 images and approving these decisions in chat.,2026-11-14T08:54:20.000131+00:00
-5,img_13_3,2.713161,blur (2.71),RECAPTURE,night,images/img_13_3.jpg,Do Phuong Manh,approve,,Blur removes vehicle and scene edge detail. Do Phuong Manh confirmed viewing all 20 images and approving these decisions in chat.,2026-11-14T08:54:20.000131+00:00
-6,img_06_2,2.475173,compression (2.48),RECAPTURE,night,images/img_06_2.jpg,Do Phuong Manh,approve,,Visible block artifacts damage scene and vehicle detail. Do Phuong Manh confirmed viewing all 20 images and approving these decisions in chat.,2026-11-14T08:54:20.000131+00:00
-7,img_05_3,2.25,glare (2.25),RECAPTURE,day,images/img_05_3.jpg,Do Phuong Manh,approve,,Saturated bright region obscures scene or vehicle detail. Do Phuong Manh confirmed viewing all 20 images and approving these decisions in chat.,2026-11-14T08:54:20.000131+00:00
-8,img_04_2,2.156962,compression (2.16),RECAPTURE,dusk,images/img_04_2.jpg,Do Phuong Manh,approve,,Visible block artifacts damage scene and vehicle detail. Do Phuong Manh confirmed viewing all 20 images and approving these decisions in chat.,2026-11-14T08:54:20.000131+00:00
-9,img_19_3,2.156732,blur (2.16),RECAPTURE,day,images/img_19_3.jpg,Do Phuong Manh,approve,,Blur removes vehicle and scene edge detail. Do Phuong Manh confirmed viewing all 20 images and approving these decisions in chat.,2026-11-14T08:54:20.000131+00:00
-10,img_14_2,2.140461,blur (2.14),RECAPTURE,day,images/img_14_2.jpg,Do Phuong Manh,approve,,Blur removes vehicle and scene edge detail. Do Phuong Manh confirmed viewing all 20 images and approving these decisions in chat.,2026-11-14T08:54:20.000131+00:00
-11,img_00_2,2.133996,compression (2.13),RECAPTURE,day,images/img_00_2.jpg,Do Phuong Manh,approve,,Visible block artifacts damage scene and vehicle detail. Do Phuong Manh confirmed viewing all 20 images and approving these decisions in chat.,2026-11-14T08:54:20.000131+00:00
-12,img_18_3,2.101375,blur (2.10),RECAPTURE,night,images/img_18_3.jpg,Do Phuong Manh,approve,,Blur removes vehicle and scene edge detail. Do Phuong Manh confirmed viewing all 20 images and approving these decisions in chat.,2026-11-14T08:54:20.000131+00:00
-13,img_04_3,2.084226,blur (2.08),RECAPTURE,dusk,images/img_04_3.jpg,Do Phuong Manh,approve,,Blur removes vehicle and scene edge detail. Do Phuong Manh confirmed viewing all 20 images and approving these decisions in chat.,2026-11-14T08:54:20.000131+00:00
-14,img_11_3,2.074219,blur (2.07),RECAPTURE,day,images/img_11_3.jpg,Do Phuong Manh,approve,,Blur removes vehicle and scene edge detail. Do Phuong Manh confirmed viewing all 20 images and approving these decisions in chat.,2026-11-14T08:54:20.000131+00:00
-15,img_16_2,2.0028,blur (2.00),RECAPTURE,day,images/img_16_2.jpg,Do Phuong Manh,approve,,Blur removes vehicle and scene edge detail. Do Phuong Manh confirmed viewing all 20 images and approving these decisions in chat.,2026-11-14T08:54:20.000131+00:00
-16,img_22_2,1.96871,compression (1.97),RECAPTURE,dusk,images/img_22_2.jpg,Do Phuong Manh,approve,,Visible block artifacts damage scene and vehicle detail. Do Phuong Manh confirmed viewing all 20 images and approving these decisions in chat.,2026-11-14T08:54:20.000131+00:00
-17,img_21_2,1.952117,blur (1.95),RECAPTURE,day,images/img_21_2.jpg,Do Phuong Manh,approve,,Blur removes vehicle and scene edge detail. Do Phuong Manh confirmed viewing all 20 images and approving these decisions in chat.,2026-11-14T08:54:20.000131+00:00
-18,img_01_2,1.950441,dark (1.95),RECAPTURE,night,images/img_01_2.jpg,Do Phuong Manh,approve,,Moderate confidence: vehicles are partly visible but road and most scene details are lost in darkness. Approve recapture for QC usability. Do Phuong Manh confirmed viewing all 20 images and approving these decisions in chat.,2026-11-14T08:54:20.000131+00:00
-19,img_20_3,1.95,glare (1.95),RECAPTURE,day,images/img_20_3.jpg,Do Phuong Manh,approve,,Saturated bright region obscures scene or vehicle detail. Do Phuong Manh confirmed viewing all 20 images and approving these decisions in chat.,2026-11-14T08:54:20.000131+00:00
-20,img_21_3,1.94645,compression (1.95),RECAPTURE,day,images/img_21_3.jpg,Do Phuong Manh,approve,,Visible block artifacts damage scene and vehicle detail. Do Phuong Manh confirmed viewing all 20 images and approving these decisions in chat.,2026-11-14T08:54:20.000131+00:00
+1,img_17_2,9.925,glare (9.93),RECAPTURE,day,images/img_17_2.jpg,Do Phuong Manh,approve,,,2026-11-14T09:52:06.567Z
+2,img_15_3,3.228457,dark (3.23),RECAPTURE,dusk,images/img_15_3.jpg,Do Phuong Manh,approve,,,2026-11-14T09:52:06.567Z
+3,img_23_3,2.988318,dark (2.99),RECAPTURE,day,images/img_23_3.jpg,Do Phuong Manh,approve,,,2026-11-14T09:52:06.567Z
+4,img_17_3,2.933616,dark (2.93),RECAPTURE,day,images/img_17_3.jpg,Do Phuong Manh,approve,,,2026-11-14T09:52:06.567Z
+5,img_13_3,2.713161,blur (2.71),RECAPTURE,night,images/img_13_3.jpg,Do Phuong Manh,approve,,,2026-11-14T09:52:06.567Z
+6,img_06_2,2.475173,compression (2.48),RECAPTURE,night,images/img_06_2.jpg,Do Phuong Manh,approve,,,2026-11-14T09:52:06.567Z
+7,img_05_3,2.25,glare (2.25),RECAPTURE,day,images/img_05_3.jpg,Do Phuong Manh,approve,,,2026-11-14T09:52:06.567Z
+8,img_04_2,2.156962,compression (2.16),RECAPTURE,dusk,images/img_04_2.jpg,Do Phuong Manh,approve,,,2026-11-14T09:52:06.567Z
+9,img_19_3,2.156732,blur (2.16),RECAPTURE,day,images/img_19_3.jpg,Do Phuong Manh,approve,,,2026-11-14T09:52:06.567Z
+10,img_14_2,2.140461,blur (2.14),RECAPTURE,day,images/img_14_2.jpg,Do Phuong Manh,approve,,,2026-11-14T09:52:06.567Z
+11,img_00_2,2.133996,compression (2.13),RECAPTURE,day,images/img_00_2.jpg,Do Phuong Manh,approve,,,2026-11-14T09:52:06.567Z
+12,img_18_3,2.101375,blur (2.10),RECAPTURE,night,images/img_18_3.jpg,Do Phuong Manh,approve,,,2026-11-14T09:52:06.567Z
+13,img_04_3,2.084226,blur (2.08),RECAPTURE,dusk,images/img_04_3.jpg,Do Phuong Manh,approve,,,2026-11-14T09:52:06.567Z
+14,img_11_3,2.074219,blur (2.07),RECAPTURE,day,images/img_11_3.jpg,Do Phuong Manh,approve,,,2026-11-14T09:52:06.567Z
+15,img_16_2,2.0028,blur (2.00),RECAPTURE,day,images/img_16_2.jpg,Do Phuong Manh,approve,,,2026-11-14T09:52:06.567Z
+16,img_22_2,1.96871,compression (1.97),RECAPTURE,dusk,images/img_22_2.jpg,Do Phuong Manh,approve,,,2026-11-14T09:52:06.567Z
+17,img_21_2,1.952117,blur (1.95),RECAPTURE,day,images/img_21_2.jpg,Do Phuong Manh,approve,,,2026-11-14T09:52:06.567Z
+18,img_01_2,1.950441,dark (1.95),RECAPTURE,night,images/img_01_2.jpg,Do Phuong Manh,approve,,,2026-11-14T09:52:06.567Z
+19,img_20_3,1.95,glare (1.95),RECAPTURE,day,images/img_20_3.jpg,Do Phuong Manh,approve,,,2026-11-14T09:52:06.567Z
+20,img_21_3,1.94645,compression (1.95),RECAPTURE,day,images/img_21_3.jpg,Do Phuong Manh,approve,,,2026-11-14T09:52:06.567Z

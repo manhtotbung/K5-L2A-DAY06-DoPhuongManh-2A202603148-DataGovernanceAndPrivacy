@@ -32,3 +32,6 @@ __pycache__/
 .DS_Store
 .idea/
 .vscode/
+
+# Office lock files (e.g. demo/~$t02_demo.pptx while PowerPoint is open)
+~$*

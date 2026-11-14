@@ -8,8 +8,8 @@
 | Challenge | T02 · Raw QC Triage |
 | Thành viên và vai trò | Do Phuong Manh · bài cá nhân, phụ trách pipeline, kiểm thử, rà soát và báo cáo |
 | Git URL | https://github.com/manhtotbung/K5-L2A-DAY06-DoPhuongManh-2A202603148-DataGovernanceAndPrivacy |
-| Tag `demo-180m` (commit) | Mốc đóng gói demo. SHA tra bằng `git rev-parse demo-180m^{commit}`. |
-| Tag `final-24h` (commit) | Mốc đóng gói cuối. SHA tra bằng `git rev-parse final-24h^{commit}`. |
+| Tag `demo-180m` (commit) | `fea5579` (report + slide demo + kiểm OOD) |
+| Tag `final-24h` (commit) | `fea5579` tại thời điểm viết; nếu có commit sửa sau đó, tag cuối được đặt lại trên commit nộp cuối — kiểm bằng `git rev-parse final-24h^{commit}` |
 | Deadline (giờ VN) | Chưa có giờ cụ thể trong tài liệu đã đối chiếu |
 
 ## 01 · Problem statement
@@ -34,6 +34,9 @@
 ## 03 · Research & design
 
 - Đề T02 hướng dẫn dùng phương sai Laplacian làm baseline và phân tích ảnh đêm, lóa cục bộ, quang học cam_B. Metric contract xác định cách so sánh cùng ngân sách trên tập eval. Xem mục 11.
+- Vì sao so với ảnh cùng cảnh: ACDC ghép mỗi ảnh điều kiện xấu (đêm, sương, mưa, tuyết) với ảnh cùng cảnh ở điều kiện thường. Cùng ý đó, PoC dùng các biến thể cùng cảnh gốc làm mốc tham chiếu, để "tối vì là ảnh đêm" không bị nhầm thành "tối vì lỗi".
+- Vì sao trả về điểm theo từng loại lỗi thay cho một nhãn đạt/không đạt: ISO/IEC TR 5259-6 coi chất lượng dữ liệu là các phép đo cần được người phụ trách xem và đánh giá. PoC xuất `s_blur`, `s_dark`, `s_glare`, `s_compression` và lý do để reviewer thấy vì sao ảnh vào hàng đợi.
+- Vì sao dùng hàng đợi top-B cho người duyệt: CVAT kiểm chất lượng bằng một tập mẫu nhỏ có người kiểm (ground truth/honeypot) thay vì duyệt toàn bộ. PoC áp dụng cùng nguyên tắc với ngân sách B=20 và ghi audit log cho từng quyết định.
 - Luồng dữ liệu gồm kiểm hash và đọc ảnh → trích đặc trưng → tính điểm theo cảnh → lấy top-B → áp dụng quyết định rà soát và ghi audit → quyết định lô.
 - PoC dùng xử lý ảnh offline, không cần model hoặc weights. Mỗi tín hiệu được so với median cùng cảnh rồi chia cho đơn vị lỗi tương ứng. Điểm ảnh là giá trị lớn nhất trong bốn tín hiệu.
 - So với ngưỡng toàn cục, median cùng cảnh giảm ảnh hưởng của ánh sáng nền và độ nét đặc trưng của camera. Nếu phần lớn ảnh cùng cảnh bị lỗi giống nhau, mốc median có thể làm tín hiệu lỗi yếu đi.
@@ -51,9 +54,9 @@
 | Defect Recall@B và Precision@B | Chờ GT | Chờ GT | Chưa có kết quả evaluator |
 | False alarm theo điều kiện sáng | Chờ GT | Chờ GT | Cần nhãn ảnh hợp lệ trong từng slice |
 | Review@B / miss / FP | B=20 | B=20 | Miss và FP cần GT |
-| Runtime (giây/100 ảnh) | 0.637708 | 0.945208 | +0.307500 giây/100 ảnh |
+| Runtime (giây/100 ảnh) | 0.637708 | 1.035417 | +0.397708 giây/100 ảnh |
 
-Runtime chuẩn hóa từ hai tệp `out/baseline/run_info.json` và `out/poc/run_info.json`. Tổng thời gian mỗi lượt là 0.6122 giây và 0.9074 giây, gồm đọc dữ liệu và ghi đầu ra. Bảng so sánh chính thức do `src.compare` sinh sau khi có hai tệp metrics của evaluator.
+Runtime chuẩn hóa từ hai tệp `out/baseline/run_info.json` và `out/poc/run_info.json`. Tổng thời gian mỗi lượt là 0.6122 giây và 0.994 giây, gồm đọc dữ liệu và ghi đầu ra. Bảng so sánh chính thức do `src.compare` sinh sau khi có hai tệp metrics của evaluator.
 
 ## 05 · Evaluation protocol
 
@@ -75,7 +78,7 @@ Bảng dưới đếm số ảnh theo điều kiện sáng trong top-20 của t�
 - `img_01_2` là ca khó trong hàng đợi vận hành. Một số xe vẫn thấy được, nhưng phần lớn chi tiết mặt đường bị chìm trong vùng tối. Quyết định duyệt là chụp lại. Chưa có GT để xác định đây có phải báo nhầm hay không.
 - `img_05_3` và `img_20_3` có vùng lóa cục bộ gần xe. PoC đưa cả hai vào hàng đợi vận hành nhờ tín hiệu bão hòa theo ô. Quan sát này chỉ áp dụng cho hai ảnh đã xem.
 - Với cam_B, ngưỡng Laplacian toàn cục có thể nhầm độ mềm quang học với mờ do lỗi. Độ chênh lỗi theo camera cần GT để xác minh.
-- Trên máy ghi trong `run_info.json`, PoC mất 9.452083 ms/ảnh tính trên toàn lượt chạy.
+- Trên máy ghi trong `run_info.json`, PoC mất 10.354167 ms/ảnh tính trên toàn lượt chạy.
 
 **Kiểm ngoài tập T02.** Lệnh `python -m tools.check_t02_ood` lấy năm biến thể đầu theo ID từ mỗi cảnh gốc trong hai cảnh đủ mẫu đầu tiên của fixture T03 (`orig_02` và `orig_09`). Script xác minh manifest nguồn, giữ nhóm theo cảnh và chạy lại PoC với config T02. Kết quả gồm 6 đề xuất RECAPTURE và 4 đề xuất KEEP. [Kết quả từng ảnh](t02_ood_results.csv).
 
@@ -83,7 +86,7 @@ Bảng dưới đếm số ảnh theo điều kiện sáng trong top-20 của t�
 
 ## 07 · Human & decision
 
-- Hàng đợi vận hành `out/poc/review_queue.csv` gồm 20 ảnh có điểm nghi lỗi cao nhất trong lô 96 ảnh. Do Phuong Manh đã xem và xác nhận `approve` cho cả 20 ảnh. [Bản lưu hàng đợi đã duyệt](review_queue.csv).
+- Hàng đợi vận hành `out/poc/review_queue.csv` gồm 20 ảnh có điểm nghi lỗi cao nhất trong lô 96 ảnh. Do Phuong Manh đã xem và xác nhận `approve` cho cả 20 ảnh. Đã xác nhận trên contact sheet và xuất CSV qua Chrome. Contact sheet ghi cùng thời điểm xuất vào trường `reviewed_at` của các dòng đã duyệt. [Bản lưu hàng đợi đã duyệt](review_queue.csv).
 - `approve` giữ đề xuất của pipeline. `reject` chuyển ảnh sang KEEP. `edit` cho phép đổi loại lỗi hoặc hành động. `out/poc/audit_log.jsonl` ghi người duyệt và trạng thái trước, sau khi áp dụng quyết định.
 - Lô có 41/96 ảnh RECAPTURE (tỷ lệ ghi trong JSON là 0.4271). Do vượt ngưỡng 30%, kết quả là **REWORK**, mã `RECAPTURE_RATE_HIGH`. Owner là `Do Phuong Manh - reviewer`. [Kết quả cuối](decision.json) · [Nhật ký quyết định](decision_log.csv).
 - HOLD áp dụng khi chưa duyệt đủ hàng đợi. REWORK áp dụng khi đã duyệt đủ và tỷ lệ chụp lại vượt ngưỡng. Các ảnh ngoài hàng đợi giữ dự đoán của pipeline.
@@ -107,7 +110,7 @@ Hai lệnh evaluate sau yêu cầu overlay GT của giảng viên.
 ```
 
 - Kiểm thử ghi nhận 55 passed, 39 skipped, 0 failed. Kết quả từ lượt chạy tại repo cục bộ.
-- Máy theo `run_info.json` gồm Python 3.11.9, `Windows-10-10.0.22631-SP0`, CPU `AMD64 Family 23 Model 104 Stepping 1, AuthenticAMD`. Git SHA `24afc16`.
+- Máy theo `run_info.json` gồm Python 3.11.9, `Windows-10-10.0.22631-SP0`, CPU `AMD64 Family 23 Model 104 Stepping 1, AuthenticAMD`. Git SHA: mã pipeline/baseline/tests ở `24afc16`; report, slide demo và script kiểm OOD ở `fea5579`. Các số runtime trong report sinh từ mã `24afc16` (code không đổi ở `fea5579`).
 
 ## 09 · Limitations & ethics
 
@@ -122,7 +125,7 @@ Hai lệnh evaluate sau yêu cầu overlay GT của giảng viên.
 
 | Học viên | Git author/email | Module / vai trò | Commit SHA / diff chứng minh | Trình bày? |
 |---|---|---|---|---|
-| Do Phuong Manh (2A202603148) | ManhDo · dophuongmanh04@gmail.com | Pipeline, baseline, kiểm thử và rà soát T02 | `24afc16` dùng email Git cũ `dophuongmanh.khlmr@gmail.com`. Xem [bảng đóng góp](team_contributions.csv). | Có theo bảng đóng góp |
+| Do Phuong Manh (2A202603148) | ManhDo · dophuongmanh.khlmr@gmail.com | Pipeline, baseline, kiểm thử và rà soát T02 | `24afc16` (pipeline, baseline, tests) · `fea5579` (report, demo, kiểm OOD). Cả hai commit dùng cùng Git identity, khớp `git shortlog -sne --all`. Xem [bảng đóng góp](team_contributions.csv). | Có theo bảng đóng góp |
 
 ## 11 · References
 
@@ -131,13 +134,16 @@ Hai lệnh evaluate sau yêu cầu overlay GT của giảng viên.
 | [Đề T02](../docs/tracks/T02.md) | 14/11/2026 | Quy định baseline Laplacian, ngân sách review và các trường hợp lỗi cần phân tích. |
 | [Metric contract](metric_contract.md) | 14/11/2026 | Ghi cách tách tập eval, ngưỡng và kế hoạch tính metric. |
 | [Evaluator T02](../src/metrics/tracks.py) | 14/11/2026 | Xác nhận cách lọc split, ghép ảnh, xếp hạng và tính metric. |
+| [ACDC: The Adverse Conditions Dataset with Correspondences (arXiv 2104.13395)](https://arxiv.org/abs/2104.13395) · [trang dataset](https://acdc.vision.ee.ethz.ch/) | 14/11/2026 | Bộ dữ liệu lái xe của ETH Zürich ghép ảnh đêm/sương/mưa/tuyết với ảnh cùng cảnh ở điều kiện thường. Cơ sở cho ý tưởng so sánh theo cảnh gốc. |
+| [ISO/IEC TR 5259-6 — Data quality for analytics and ML: visualization framework](https://www.iso.org/standard/86532.html) | 14/11/2026 | Báo cáo kỹ thuật về khung trực quan hóa kết quả đo chất lượng dữ liệu cho người phụ trách. Cơ sở cho việc xuất điểm từng loại lỗi và contact sheet. Chỉ đọc phần mô tả công khai, chưa đọc toàn văn. |
+| [CVAT — Automated QA, Review & Honeypots](https://docs.cvat.ai/docs/qa-analytics/auto-qa/) | 14/11/2026 | Tài liệu CVAT về đánh giá chất lượng nhãn bằng tập kiểm nhỏ có người duyệt. Cơ sở cho hàng đợi top-B và vòng review. |
 
 ---
 
 **Bảng 3 · Checklist chốt khi nộp**
 
-- [ ] Link repo ở mục 00 và hướng dẫn chạy ở README. Fixture mẫu là synthetic. Đối chiếu tag cuối trên repo dùng để nộp.
-- [ ] Lệnh run, evaluate và tests đã ghi ở mục 08. Evaluate chờ overlay GT.
-- [ ] Có failure cases và bằng chứng review, quyết định trong `reports/`. Còn thiếu metrics chính thức.
+- [x] Link repo ở mục 00 và hướng dẫn chạy ở README. Fixture mẫu là synthetic, không có PII thật. Tag `demo-180m` đã đẩy lên repo; tag `final-24h` đặt trên commit nộp cuối.
+- [x] Lệnh run, evaluate và tests đã ghi ở mục 08; chạy offline, không cần tải gì. Evaluate chờ overlay GT của giảng viên.
+- [x] Có failure cases, bằng chứng review và decision log trong `reports/`. Metrics chính thức (`metrics_*.json`, Bảng 1) chờ GT của giảng viên — không tự điền số.
 - [x] Có nguồn, license, split, seed, môi trường offline và mô tả phạm vi GT/eval.
 - [x] Bài cá nhân có commit thực chất, nêu tại mục 10.
