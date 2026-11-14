@@ -1,0 +1,4 @@
+# Fixtures are hash-checked (manifest.csv sha256): never convert line endings on checkout.
+# Without this, Git for Windows (core.autocrlf=true) rewrites LF -> CRLF and every
+# manifest check / test_manifest_hashes_match fails.
+fixtures/** -text

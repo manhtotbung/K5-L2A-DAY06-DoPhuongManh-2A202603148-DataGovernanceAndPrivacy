@@ -13,4 +13,13 @@ offline: true                     # demo/eval must not touch the network
 strict_provenance: true           # fail if manifest.csv hashes do not match
 
 # Track params (merged over track_config.params). Freeze before evaluation.
-params: {}
+params:                           # frozen 2026-11-14 before eval (see reports/metric_contract.md)
+  budget: 20
+  defect_units:                   # 1 unit = clear defect vs scene median (chosen on dev pixels, no labels)
+    blur: 2.5                     # log lap_var drop (~12x)
+    dark: 1.0                     # log brightness drop (~2.7x)
+    glare: 0.10                   # +10% saturated pixels in one tile
+    compression: 1.0              # blockiness ratio increase
+  recapture_threshold: 1.0        # normalised score >= this -> RECAPTURE
+  max_recapture_rate: 0.30        # batch decision: above -> REWORK
+  baseline_quantile: 0.75         # baseline: global Laplacian threshold quantile on dev
